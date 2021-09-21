@@ -1,0 +1,15 @@
+{
+  "name": "general-bundle-tool",
+  "version": "1.0.0",
+  "description": "bundle tool base on rollup",
+  "main": "index.js",
+  "repository": "git@github.com:chingQAQ/general-bundle-tool.git",
+  "author": "Achiu03 <aion.chiu@isobar.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^2.56.3"
+  },
+  "dependencies": {
+    "cross": "^1.0.0"
+  }
+}
