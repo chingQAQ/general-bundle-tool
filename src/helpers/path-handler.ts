@@ -1,6 +1,10 @@
 ﻿import { join, sep } from 'path';
 
-export const resolve = (path: string, ...other: Array<string>): string => {
+interface Resolve {
+  (x: string, ...y: Array<string>): string;
+}
+
+export const resolvePath: Resolve = function (path, ...other) {
   let o = '';
   if (path == undefined) throw new Error("Argument must be a string");
   if (other.length && path != undefined) {

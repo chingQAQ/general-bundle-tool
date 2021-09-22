@@ -3,8 +3,13 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Node 14",
   "compilerOptions": {
+    "baseUrl": "./",
     "module": "commonjs",
     "target": "es2015",
+    "lib": [
+      "es2015"
+    ],
+    "importHelpers": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -12,9 +17,10 @@
     "noEmitOnError": true
   },
   "include": [
-    "src/**/*"
+    "./src/index.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "__tests__/**"
   ]
 }
