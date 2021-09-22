@@ -10,13 +10,16 @@
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.6",
     "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-node-resolve": "^13.0.5",
     "@tsconfig/node14": "^1.0.1",
     "@tsconfig/recommended": "^1.0.1",
     "@types/jest": "^27.0.2",
+    "@types/jquery": "^3.5.6",
     "@types/node": "^16.9.4",
     "cross-env": "^7.0.3",
     "jest": "^27.2.1",
+    "jquery": "^3.6.0",
     "nodemon": "^2.0.12",
     "rollup": "^2.56.3",
     "ts-jest": "^27.0.5",
@@ -26,8 +29,8 @@
   },
   "scripts": {
     "dev": "nodemon --watch src/**/*.ts --exec ts-node src/index.ts",
-    "compiler": "tsc --project ./tsconfig.json --rootDir ./src --outDir ./dist && cd ./dist && move ./index.js ../rollup.config.js",
-    "test": "jest --watch '__tests__/*' --coverage",
-    "build": "rollup --config rollup.config.js"
+    "tsc": "tsc --project ./tsconfig.json --rootDir ./src --outDir ./dist && cd ./dist && mv ./index.js ../rollup.config.js",
+    "dev:test": "jest --watch '__tests__/*' --coverage",
+    "build:dev": "rollup --config rollup.config.js"
   }
 }

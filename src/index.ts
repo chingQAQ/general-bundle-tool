@@ -1,11 +1,6 @@
-﻿import { join } from 'path';
-import { resolvePath } from '../src/helpers/path-handler';
-import resolve from '@rollup/plugin-node-resolve';
+﻿import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
-
-const config = require('../build.config.json');
-
-console.log(config.data)
 
 interface Output<Type> {
   [propName: string]: Type;
@@ -17,6 +12,8 @@ interface RollupOptions {
   [propName: string]: any;
 }
 
+const config: any = require('./build.config.json');
+const extensions: Array<string> = ['.js', '.jsx', '.ts', '.tsx'];
 const babelOptions = {
   babelHelpers: 'bundled',
   "presets": [
@@ -30,22 +27,97 @@ const babelOptions = {
     ]
   ]
 }
-
 const defaultOptions: RollupOptions = {
-  input: './__tests__/index.js',
-  output: {
-    file: './src/index.js',
-    format: 'es'
-  },
+  // custom default
   plugins: [
-    resolve(),
-    babel(<any>babelOptions)]
-}
+    resolve({
+      extensions
+    }),
+    commonjs(),
+    babel(<any>babelOptions)
+  ]
+  // // core input options
+  // external,
+  // input, // conditionally required
+  // plugins,
 
-const customOptions: RollupOptions = {
-  input: './__tests__/123.js',
-}
+  // // advanced input options
+  // cache,
+  // onwarn,
+  // preserveEntrySignatures,
+  // strictDeprecations,
 
+  // // danger zone
+  // acorn,
+  // acornInjectPlugins,
+  // context,
+  // moduleContext,
+  // preserveSymlinks,
+  // shimMissingExports,
+  // treeshake,
+
+  // // experimental
+  // experimentalCacheExpiry,
+  // perf,
+
+  // // required (can be an array, for multiple outputs)
+  // output: {
+  //   // core output options
+  //   dir,
+  //   file,
+  //   format, // required
+  //   globals,
+  //   name,
+  //   plugins,
+
+  //   // advanced output options
+  //   assetFileNames,
+  //   banner,
+  //   chunkFileNames,
+  //   compact,
+  //   entryFileNames,
+  //   extend,
+  //   footer,
+  //   hoistTransitiveImports,
+  //   inlineDynamicImports,
+  //   interop,
+  //   intro,
+  //   manualChunks,
+  //   minifyInternalExports,
+  //   outro,
+  //   paths,
+  //   preserveModules,
+  //   preserveModulesRoot,
+  //   sourcemap,
+  //   sourcemapExcludeSources,
+  //   sourcemapFile,
+  //   sourcemapPathTransform,
+  //   validate,
+
+  //   // danger zone
+  //   amd,
+  //   esModule,
+  //   exports,
+  //   externalLiveBindings,
+  //   freeze,
+  //   indent,
+  //   namespaceToStringTag,
+  //   noConflict,
+  //   preferConst,
+  //   sanitizeFileName,
+  //   strict,
+  //   systemNullSetters
+  // },
+  // watch: {
+  //   buildDelay,
+  //   chokidar,
+  //   clearScreen,
+  //   skipWrite,
+  //   exclude,
+  //   include
+  // },
+}
+const customOptions: RollupOptions = config.data;
 const ret: RollupOptions = Object.assign({}, defaultOptions, customOptions);
 
 export default ret;

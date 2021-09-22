@@ -1,6 +1,8 @@
-﻿// import { resolvePath } from '../src/helpers/path-handler';
-// import config from 'build.config.js';
+﻿const config = require('../build.config.json');
 
-test('is resolve function return true path ', () => {
-  // console.log(config);
+test('is successful to get config file', () => {
+  const length: number = Object.keys(config).length;
+  const expected: boolean = true;
+  const actual: boolean = length > 0;
+  expect(actual).toBe(expected);
 });

@@ -1,5 +1,12 @@
 ﻿{
   "data": {
-    
+    "input": "./example/assets/js/index.js",
+    "output": {
+      "file": "./example/source/index.js",
+      "format": "iife",
+      "globals": {
+        "jquery": "$"
+      }
+    }
   }
 }
